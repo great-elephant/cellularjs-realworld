@@ -1,12 +1,12 @@
 
-import { Auth } from "$share/auth";
-import { SignInData } from "$share/auth/sign-in-data";
-import { NotFound, Unprocessable } from "$share/msg";
-import { Transactional } from "$share/typeorm";
-import { Service, ServiceHandler } from "@cellularjs/net";
-import { formatUserRes } from "user/$inner/format-user-res";
-import { UserRepository } from "user/$inner/user.data";
-import { UpdateUserReq } from "./update-user.req";
+import { Auth } from '$share/auth';
+import { SignInData } from '$share/auth/sign-in-data';
+import { NotFound, Unprocessable } from '$share/msg';
+import { Transactional } from '$share/typeorm';
+import { Service, ServiceHandler } from '@cellularjs/net';
+import { formatUserRes } from 'user/$inner/helpers';
+import { UserRepository } from 'user/$inner/user.data';
+import { UpdateUserReq } from './update-user.req';
 
 @Auth()
 @Transactional()
