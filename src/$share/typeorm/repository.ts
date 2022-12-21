@@ -33,12 +33,12 @@ class RepositoryProxy implements ProxyHandler {
 
     return new Proxy(await ctx.next(), {
       get(target, prop) {
-        if (prop in target) {
-          return target[prop];
-        }
-
         if (prop in typeOrmRepository) {
           return typeOrmRepository[prop];
+        }
+
+        if (prop in target) {
+          return target[prop];
         }
       },
     });

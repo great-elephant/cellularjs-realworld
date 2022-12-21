@@ -8,4 +8,9 @@ export function configRoutes(app: Express) {
   usersRouter.post('/login', proxyTo('User:LoginQry'));
   app.use('/api/users', usersRouter);
 
+  // user
+  const userRouter = Router();
+  userRouter.get('/', proxyTo('User:CurrentUserQry'));
+  app.use('/api/user', userRouter);
+
 }

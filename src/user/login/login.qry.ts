@@ -6,7 +6,6 @@ import { formatUserRes } from "user/$inner/format-user-res";
 import { UserRepository } from "user/$inner/user.data";
 import { LoginReq } from "./login.req";
 
-@Transactional()
 @Service({ scope: 'publish' })
 export class LoginQry implements ServiceHandler {
   constructor(

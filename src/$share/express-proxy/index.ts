@@ -6,7 +6,7 @@ const inputTransform: InputTransform = (req, proxyTo) => {
   const logger = getLogger('ExpressProxy');
 
   const irq = new IRQ(
-    { to: proxyTo },
+    { to: proxyTo, authorization: req.headers.authorization },
     { ...req.query, ...req.params, ...req.body },
   );
 
