@@ -11,6 +11,7 @@ export function configRoutes(app: Express) {
   // user
   const userRouter = Router();
   userRouter.get('/', proxyTo('User:CurrentUserQry'));
+  userRouter.put('/', proxyTo('User:UpdateUserCmd'));
   app.use('/api/user', userRouter);
 
 }
