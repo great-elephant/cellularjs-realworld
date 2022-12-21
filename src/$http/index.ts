@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { createNetWork } from '@cellularjs/net';
+import { createNetWork, IRS, transportListener } from '@cellularjs/net';
 import { getLogger } from '@cellularjs/logger';
 import { env } from '$share/env';
 import { netCnfs } from '$share/net';
@@ -25,3 +25,13 @@ import { configRoutes } from './routes';
     logger.error(`failed to initialize\n${err}`);
   }
 })();
+
+
+transportListener.on('fail', (ctx) => {
+  if (ctx.originalError instanceof IRS) {
+    getLogger(ctx.irq.header.to).error(JSON.stringify(ctx.originalError.body))
+    return;
+  }
+
+  getLogger(ctx.irq.header.to).error(ctx.originalError?.stack || ctx.originalError)
+});
