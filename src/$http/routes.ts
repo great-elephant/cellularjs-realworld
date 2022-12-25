@@ -17,6 +17,7 @@ export function configRoutes(app: Express) {
   // articles
   const articlesRouter = Router();
   articlesRouter.post('/', proxyTo('Article:CreateArticleCmd'));
+  articlesRouter.delete('/:slug', proxyTo('Article:DeleteArticleCmd'));
 
   app.use('/api/articles', articlesRouter);
 
