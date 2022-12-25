@@ -1,7 +1,7 @@
 import { UnAuthorized } from "$share/msg";
 import { Injectable } from "@cellularjs/di"
 import { addServiceProxies, ServiceHandler, IRQ, NextHandler } from "@cellularjs/net"
-import { jwt, parseToken } from "./jwt";
+import { parseToken } from "./jwt";
 import { SignInData } from "./sign-in-data";
 
 export const Auth = () => aClass => {
