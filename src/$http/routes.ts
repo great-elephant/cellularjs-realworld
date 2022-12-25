@@ -14,4 +14,10 @@ export function configRoutes(app: Express) {
   userRouter.put('/', proxyTo('User:UpdateUserCmd'));
   app.use('/api/user', userRouter);
 
+  // articles
+  const articlesRouter = Router();
+  articlesRouter.post('/', proxyTo('Article:CreateArticleCmd'));
+
+  app.use('/api/articles', articlesRouter);
+
 }

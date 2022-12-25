@@ -8,6 +8,10 @@ export function UnAuthorized(body: any = {}) {
   return new IRS({ status: 401 }, { err: 'UNAUTHORIZED', ...body });
 }
 
+export function Forbidden(body: any = {}) {
+  return new IRS({ status: 403 }, { err: 'FORBIDDEN', ...body });
+}
+
 export function NotFound(body: any = {}) {
   return new IRS({ status: 404 }, { err: 'NOT_FOUND', ...body });
 }
