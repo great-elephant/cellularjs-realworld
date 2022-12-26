@@ -2,26 +2,29 @@ import { proxyTo } from '$share/express-proxy';
 import { Express, Router } from 'express';
 
 export function configRoutes(app: Express) {
-  // users
-  const usersRouter = Router();
-  usersRouter.post('/', proxyTo('User:RegisterCmd'));
-  usersRouter.post('/login', proxyTo('User:LoginQry'));
+  // /api/users
+  const usersRouter = Router()
+    .post('/', proxyTo('User:RegisterCmd'))
+    .post('/login', proxyTo('User:LoginQry'));
+
   app.use('/api/users', usersRouter);
 
-  // user
-  const userRouter = Router();
-  userRouter.get('/', proxyTo('User:CurrentUserQry'));
-  userRouter.put('/', proxyTo('User:UpdateUserCmd'));
+  // /api/user
+  const userRouter = Router()
+    .get('/', proxyTo('User:CurrentUserQry'))
+    .put('/', proxyTo('User:UpdateUserCmd'));
+
   app.use('/api/user', userRouter);
 
-  // articles
-  const articlesRouter = Router();
-  articlesRouter.post('/', proxyTo('Article:CreateArticleCmd'));
-  articlesRouter.get('/:slug', proxyTo('Article:GetArticleQry'));
-  articlesRouter.delete('/:slug', proxyTo('Article:DeleteArticleCmd'));
-  articlesRouter.put('/:slug', proxyTo('Article:UpdateArticleCmd'));
-  articlesRouter.post('/:slug/favorite', proxyTo('Article:FavoriteArticleCmd'));
-  articlesRouter.delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'));
+  // /api/articles
+  const articlesRouter = Router()
+    .post('/', proxyTo('Article:CreateArticleCmd'))
+    .get('/', proxyTo('Article:SearchQry'))
+    .get('/:slug', proxyTo('Article:GetArticleQry'))
+    .delete('/:slug', proxyTo('Article:DeleteArticleCmd'))
+    .put('/:slug', proxyTo('Article:UpdateArticleCmd'))
+    .post('/:slug/favorite', proxyTo('Article:FavoriteArticleCmd'))
+    .delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'));
 
   app.use('/api/articles', articlesRouter);
 
