@@ -27,7 +27,7 @@ export class FavoriteArticleCmd implements ServiceHandler {
 
     if (!article) throw NotFound();
 
-    if (this.isFavorited()) return this.returnArticle();
+    if (await this.isFavorited()) return this.returnArticle();
 
     await favoriteRepository.save({ userId: signInData.userId, articleId: article.id });
 
