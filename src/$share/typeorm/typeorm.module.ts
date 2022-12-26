@@ -8,11 +8,8 @@ export const DEFAULT_DB = 'default';
 
 @Module({})
 export class TypeOrmModule {
-  static initialize(options: DataSourceOptions): ExtModuleMeta {
-    return {
-      extModule: TypeOrmModule,
-      exports: [getRealTypeOrmModule(options)],
-    };
+  static initialize(options: DataSourceOptions) {
+    return getRealTypeOrmModule(options);
   }
 
   static forFeature(entities: any[]): ExtModuleMeta {
@@ -32,7 +29,7 @@ function getRealTypeOrmModule2(entities: any[]) {
       if (!dataSource) {
         throw new Error(
           'You need initialize data source before adding entities.\n' +
-          `(Eg: https://github.com/great-elephant/cellularjs-realworld/tree/master/src/%24share)`,
+          `(Example: https://github.com/great-elephant/cellularjs-realworld/tree/master/src/%24share)`,
         );
       }
 

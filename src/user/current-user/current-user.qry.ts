@@ -8,7 +8,6 @@ import { formatUserRes } from 'user/$inner/helpers';
 import { UserRepository } from 'user/$inner/user.data';
 
 @Auth()
-@Transactional()
 @Service({ scope: 'publish' })
 export class CurrentUserQry implements ServiceHandler {
   constructor(
