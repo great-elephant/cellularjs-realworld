@@ -20,6 +20,8 @@ export function configRoutes(app: Express) {
   articlesRouter.get('/:slug', proxyTo('Article:GetArticleQry'));
   articlesRouter.delete('/:slug', proxyTo('Article:DeleteArticleCmd'));
   articlesRouter.put('/:slug', proxyTo('Article:UpdateArticleCmd'));
+  articlesRouter.post('/:slug/favorite', proxyTo('Article:FavoriteArticleCmd'));
+  articlesRouter.delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'));
 
   app.use('/api/articles', articlesRouter);
 

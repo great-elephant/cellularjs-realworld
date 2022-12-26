@@ -4,6 +4,7 @@ import { Forbidden, NotFound } from '$share/msg';
 import { Transactional } from '$share/typeorm';
 import { Service, ServiceHandler } from '@cellularjs/net';
 import { ArticleRepository } from 'article/$inner/article.data';
+import { FavoriteRepository } from 'article/$inner/favorite.data';
 import { UpdateArticleReq } from './update-article.req';
 
 @Auth()
@@ -12,14 +13,20 @@ import { UpdateArticleReq } from './update-article.req';
 export class UpdateArticleCmd implements ServiceHandler {
   constructor(
     private signInData: SignInData,
+    private updateArticleReq: UpdateArticleReq,
     private articleRepository: ArticleRepository,
-    private updateArticleReq: UpdateArticleReq
+    private favoriteRepository: FavoriteRepository,
   ) { }
 
   async handle() {
-    const { signInData, articleRepository, updateArticleReq } = this;
-    const article = await articleRepository.findOneBy({ slug: updateArticleReq.slug });
+    const {
+      signInData,
+      updateArticleReq,
+      favoriteRepository,
+      articleRepository,
+    } = this;
 
+    const article = await articleRepository.findOneBy({ slug: updateArticleReq.slug });
     if (!article) {
       throw NotFound();
     }
@@ -33,10 +40,14 @@ export class UpdateArticleCmd implements ServiceHandler {
       body: updateArticleReq.body,
     });
 
+    const isFavorited = signInData
+      ? !!await favoriteRepository.findOneBy({ articleId: article.id, userId: signInData.userId })
+      : false;
+
     return {
       article: {
         ...newArticle,
-        favorited: false, // tmp hard code
+        favorited: isFavorited,
       },
     };
   }
