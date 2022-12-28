@@ -43,6 +43,8 @@ export class CreateArticleCmd implements ServiceHandler {
   }
 
   private async saveTags(tagList: string[]) {
+    if (!tagList.length) return;
+
     const tags = (await this.tagRepository.createQueryBuilder('tag')
       .where('tag.label IN (:...tag)', { tag: tagList })
       .getMany())
