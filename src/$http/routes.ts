@@ -28,4 +28,9 @@ export function configRoutes(app: Express) {
 
   app.use('/api/articles', articlesRouter);
 
+  // /api/tags
+  const tagRouter = Router()
+    .get('/', proxyTo('Article:GetTagsQry'));
+
+  app.use('/api/tags', tagRouter);
 }
