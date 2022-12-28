@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import { createNetWork, IRS, transportListener } from '@cellularjs/net';
 import { getLogger } from '@cellularjs/logger';
 import { env } from '$share/env';
@@ -10,6 +11,7 @@ import { configRoutes } from './routes';
 
   try {
     const app = express();
+    app.use(cors())
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.disable('x-powered-by');
