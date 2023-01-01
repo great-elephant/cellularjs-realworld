@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@cellularjs/cli@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/cli/-/cli-0.13.0.tgz#9a539cb0052fe7c32f13d6304232d2e3a82ca237"
-  integrity sha512-vZSR6BKe6srauwm/srU7T/hVztWL7zEU3ys2rhu+Ynf4aaMZPRf/vOEc+mAnhguovCeeUr483MrOi77TjeKVKw==
+"@cellularjs/cli@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/cli/-/cli-0.13.1.tgz#f0db8c9caba307fe176402e2409b0fc30fc3844e"
+  integrity sha512-SHMbTPqYFIO8CFVz8KIPa/4DmITPyy0zZcbDCvga3aOwZBiUsRPGXI2HSA48qUym6uotr7irkGdEKNv8p5JpwA==
   dependencies:
     chalk "4"
     clui "^0.3.6"
@@ -23,37 +23,37 @@
     webpack-node-externals "^3.0.0"
     webpackbar "^5.0.2"
 
-"@cellularjs/di@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/di/-/di-0.13.0.tgz#a8c8c034a17f84897bfd83a9b0b541664789d42b"
-  integrity sha512-nqZbBoFHwaDIjKKS5YLY0snfimZcJCvINi90YPX22zuTVHS4RPgQj4lCFDsEzdOT/CtjFN1JacS7Ib0SoABwBQ==
+"@cellularjs/di@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/di/-/di-0.13.1.tgz#515a1c0e4b442031ee07d6eb30f7321bd6870a2e"
+  integrity sha512-yydeFnCLcRdaZMrPz1QvQ+BsH442IfNHg4CpU/trlFbxRGoohWbb9yh+nZY1X5bU3lPfmLLuKh3zC0zFprmdqA==
   dependencies:
     reflect-metadata "^0.1.13"
 
-"@cellularjs/env@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/env/-/env-0.13.0.tgz#fcb4bee18edf5dc5175c8a8e504c3cdf0da93eee"
-  integrity sha512-1XNr7HV8MMYErgyUKErmWfqmjA/EOiWXPoG9CbdKzASSPzEDTWKuNtb9ZaD2cifehAJhXi8xLfQy32zp5FhE5Q==
+"@cellularjs/env@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/env/-/env-0.13.1.tgz#28b97e17e8b307b74f9972a9e10255e0a7fcf240"
+  integrity sha512-JduhG0GG97nqDN7unBO7ugIvqQcBW3UrLmeomnvwGKrX7gRJan+xRlikyTg+lArEjceNXm/hNBij7bt65g2MMg==
   dependencies:
-    "@cellularjs/di" "^0.13.0"
+    "@cellularjs/di" "^0.13.1"
     dotenv-flow "^3.2.0"
 
-"@cellularjs/express-proxy@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/express-proxy/-/express-proxy-0.13.0.tgz#c2843887cc0c5e7d836cabc4165ae3bd74bfd693"
-  integrity sha512-8DqzHEAMFehOUZTs5fdCMkfuHikeFJRFpkrikRb0Ps/VQgCKJMhMHQwZbW+9wcN7frbQwZTdibff8M7V6lru7w==
+"@cellularjs/express-proxy@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/express-proxy/-/express-proxy-0.13.1.tgz#11e9c50d784456a992960ca043a82c853dd50056"
+  integrity sha512-3f/pKOHBxRVt/AONMQhNYbiJdYTB9bq6D7y0Mx8lUQgVV5tlePdI2Sa6vCEIU5i+eE6JokMEX7gM8ZPQVULaXg==
 
-"@cellularjs/logger@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/logger/-/logger-0.13.0.tgz#38aa87a08ce2f2a7015d62b80fd452b43d602dc4"
-  integrity sha512-DRWY3zxVf0kW9OdNgBUC+aUVhr+m1JBSPWokZx/8BLo5FYGrJBrTYgm/YTtPFh6E+ttmMvihFs1xHVvbPJkAtg==
+"@cellularjs/logger@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/logger/-/logger-0.13.1.tgz#823766e8bd2ac6a3dd59aa90371773603d3dd46a"
+  integrity sha512-iOw7+/4Qe4OmiqosWLLxKputsHuHO/jsXnHZTa1/ybFtZgAUeRmKJ6vY1O7VZ5IIH/+Ud7/3WdTDqX0vWJuALQ==
 
-"@cellularjs/net@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cellularjs/net/-/net-0.13.0.tgz#b2b440c27b3157700f7690d1cf390a44efde288c"
-  integrity sha512-IqkcYuHaJVrHhLyP02YzKmbTAOu7yjH/D2Vl2RHyXr0Rq5073WkY4NnN3GlaROYUJK2eoMYdRYT3OnggoY++SQ==
+"@cellularjs/net@^0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@cellularjs/net/-/net-0.13.1.tgz#81788be09d011352679015c5884c625ceeb28669"
+  integrity sha512-CUuDfVJ30uAOmeSTbvSq2+rtXATfziFfUm88jr1JSCnIJ3+j6zyztYg+Oe7mpYc6mvEkP1zw+8uD5FH2wA3NlQ==
   dependencies:
-    "@cellularjs/di" "^0.13.0"
+    "@cellularjs/di" "^0.13.1"
     emittery "^0.10.0"
 
 "@cspotcode/source-map-support@^0.8.0":
@@ -596,9 +596,9 @@ call-bind@^1.0.0:
     get-intrinsic "^1.0.2"
 
 caniuse-lite@^1.0.30001400:
-  version "1.0.30001439"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001439.tgz#ab7371faeb4adff4b74dad1718a6fd122e45d9cb"
-  integrity sha512-1MgUzEkoMO6gKfXflStpYgZDlFM7M/ck/bgfVCACO5vnAf0fXoNVHdWtqGU+MYca+4bL9Z5bpOVmR33cWW9G2A==
+  version "1.0.30001441"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001441.tgz#987437b266260b640a23cd18fbddb509d7f69f3e"
+  integrity sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==
 
 chalk@4, chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
   version "4.1.2"
@@ -1346,9 +1346,9 @@ json-schema-traverse@^0.4.1:
   integrity sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==
 
 json5@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
-  integrity sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.2.tgz#63d98d60f21b313b77c4d6da18bfa69d80e1d593"
+  integrity sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==
   dependencies:
     minimist "^1.2.0"
 
