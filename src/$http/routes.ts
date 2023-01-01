@@ -9,6 +9,14 @@ export function configRoutes(app: Express) {
 
   app.use('/api/users', usersRouter);
 
+  // /api/profiles
+  const profilesRouter = Router()
+    .get('/:username', proxyTo('User:GetUserQry'))
+    .post('/:username/follow', proxyTo('User:FollowUserCmd'))
+    .delete('/:username/follow', proxyTo('User:UnfollowUserCmd'))
+
+  app.use('/api/profiles', profilesRouter);
+
   // /api/user
   const userRouter = Router()
     .get('/', proxyTo('User:CurrentUserQry'))

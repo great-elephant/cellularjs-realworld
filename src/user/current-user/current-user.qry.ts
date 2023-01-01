@@ -2,7 +2,6 @@
 import { Auth } from '$share/auth';
 import { SignInData } from '$share/auth/sign-in-data';
 import { NotFound } from '$share/msg';
-import { Transactional } from '$share/typeorm';
 import { Service, ServiceHandler } from '@cellularjs/net';
 import { formatUserRes } from 'user/$inner/helpers';
 import { UserRepository } from 'user/$inner/user.data';

@@ -24,7 +24,7 @@ import { configRoutes } from './routes';
 
     app.listen(port, () => logger.info(`ready for HTTP request (port: ${port})`));
   } catch (err) {
-    logger.error(`failed to initialize\n${err}`);
+    logger.fatal(`failed to initialize\n${err}`);
   }
 })();
 
