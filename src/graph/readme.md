@@ -1,0 +1,1 @@
+Graph cell !== GraphQL, you can combine both to create API composition service.
