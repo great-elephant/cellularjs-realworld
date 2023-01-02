@@ -2,7 +2,7 @@ import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 import { Injectable, addProxy, ProxyContext } from '@cellularjs/di';
 import { IRQ } from '@cellularjs/net';
-import { BadRequest } from '$share/msg';
+import { BadRequest, Unprocessable } from '$share/msg';
 
 type DataGetter = (irq: IRQ) => any;
 
@@ -28,7 +28,7 @@ class ValidateReqProxy {
     const errors = await validate(dto);
 
     if (errors.length) {
-      throw BadRequest({ errors });
+      throw Unprocessable({ errors });
     }
 
     return dto;
