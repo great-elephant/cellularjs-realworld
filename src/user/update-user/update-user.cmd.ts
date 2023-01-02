@@ -31,13 +31,12 @@ export class UpdateUserCmd implements ServiceHandler {
     }
 
     await userRepository.update(
-      { email: newEmail },
       { id: user.id },
+      { email: newEmail, bio: updateUserReq.bio, image: updateUserReq.image },
     );
 
-    return formatUserRes({
-      ...user,
-      email: newEmail,
-    });
+    return formatUserRes(
+      await userRepository.findOneBy({ id: signInData.userId }),
+    );
   }
 }

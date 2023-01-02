@@ -6,4 +6,8 @@ export class UpdateUserReq {
   @IsNotEmpty()
   @IsEmail()
   email: string;
+
+  image: string;
+
+  bio: string;
 }
