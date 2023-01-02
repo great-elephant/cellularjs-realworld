@@ -33,6 +33,8 @@ export function configRoutes(app: Express) {
     .put('/:slug', proxyTo('Article:UpdateArticleCmd'))
     .post('/:slug/favorite', proxyTo('Article:FavoriteArticleCmd'))
     .delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'));
+    .post('/:slug/comments', proxyTo('Article:AddCommentCmd'))
+    .delete('/:slug/comments/:commentId', proxyTo('Article:DeleteCommentCmd'));
 
   app.use('/api/articles', articlesRouter);
 
