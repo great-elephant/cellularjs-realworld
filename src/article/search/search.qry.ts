@@ -1,9 +1,10 @@
 import { SignInData } from '$share/auth/sign-in-data';
+import { Article$SearchQryRes } from '$share/msg';
 import { IRQ, Service, ServiceHandler } from '@cellularjs/net';
 import { ArticleEntity, ArticleRepository } from 'article/$inner/article.data';
 import { FavoriteRepository } from 'article/$inner/favorite.data';
 import { SelectQueryBuilder } from 'typeorm';
-import { UserRepository } from 'user/$inner/user.data';
+import { SearchReq } from './search.req';
 
 @Service({ scope: 'publish' })
 export class SearchQry implements ServiceHandler {
@@ -13,7 +14,6 @@ export class SearchQry implements ServiceHandler {
 
   constructor(
     articleRepository: ArticleRepository,
-    private userRepository: UserRepository,
     private favoriteRepository: FavoriteRepository,
     private irq: IRQ,
     private signInData?: SignInData,
@@ -25,67 +25,43 @@ export class SearchQry implements ServiceHandler {
 
   async handle() {
     const { irq, qb } = this;
-    const query = irq.body;
+    const query: SearchReq = irq.body;
 
-    qb.limit(this.limit);
+    qb.limit(this.limit)
+      .offset(this.offset)
+      .orderBy('article.createdAt', 'DESC');
 
-    qb.offset(this.offset);
+    if (query.authorId) {
+      this.qb.andWhere('article.author = :authorId', { authorId: query.authorId });
 
-    if (query.author) {
-      await this.queryByAuthor(query.author);
+    } else if (query.authorIds) {
+      this.qb.andWhere('article.author IN (:...authorIds)', { authorIds: query.authorIds });
+
+    } else if (query.favoritedBy) {
+      await this.queryByUserFavorited(query.favoritedBy);
     }
 
     if (query.tag) {
       qb.andWhere('article.tagList LIKE :tag', { tag: `%${query.tag}%` });
     }
 
-    if (query.favorited) {
-      await this.queryByUserFavorited(query.favorited);
-    }
-
-    qb.orderBy('article.createdAt', 'DESC');
-
     const [articles, articlesCount] = await qb.getManyAndCount();
 
-    await this.bindingAuthor(articles);
-
-    await this.bindingFavorited(articles);
-
-    return { articles, articlesCount };
+    return {
+      articles: await this.bindingFavorited(articles),
+      articlesCount,
+    } as Article$SearchQryRes;
   }
 
-  // Note: This is CLL Stage 1
-  private async queryByUserFavorited(userName: string) {
-    const user = await this.userRepository.findOneBy({ username: userName });
-    const favorites = await this.favoriteRepository
+  private async queryByUserFavorited(favoritedBy: number) {
+    const favoritesQb = this.favoriteRepository
       .createQueryBuilder('favorite')
-      .where('favorite.userId = :userId', { userId: user.id })
+      .select('favorite.articleId')
       .offset(this.offset)
       .limit(this.limit)
-      .getMany();
+      .where('favorite.userId = :userId')
 
-    this.qb.andWhere('article.id IN (:...articleIds)', { articleIds: favorites.map(a => a.articleId) });
-  }
-
-  // Note: This is CLL Stage 1
-  private async queryByAuthor(userName: string) {
-    const author = await this.userRepository.findOneBy({ username: userName });
-    this.qb.andWhere('article.author = :authorId', { authorId: author?.id || null });
-  }
-
-  // Note: This is CLL Stage 1
-  private async bindingAuthor(articles: ArticleEntity[]) {
-    if (!articles.length) return;
-    const { userRepository } = this;
-
-    const authors = await userRepository.createQueryBuilder('user')
-      .select(['user.id', 'user.username', 'user.bio', 'user.image'])
-      .where('user.id IN (:...articles)', { articles: articles.map(a => a.author) })
-      .getMany();
-
-    articles.forEach(article => {
-      (article as any).author = authors.find(a => a.id === article.author);
-    })
+    this.qb.andWhere(`article.id IN (${favoritesQb.getQuery()})`, { userId: favoritedBy });
   }
 
   private async bindingFavorited(articles: ArticleEntity[]) {
@@ -94,8 +70,7 @@ export class SearchQry implements ServiceHandler {
     const { signInData, favoriteRepository } = this;
 
     if (!signInData) {
-      articles.forEach(article => (article as any).favorited = false);
-      return;
+      return articles.map(article => ({ ...article, favorited: false }));
     }
 
     const favorites = await favoriteRepository.createQueryBuilder('favorite')
@@ -104,8 +79,10 @@ export class SearchQry implements ServiceHandler {
       .getMany();
 
     const articleIds = favorites.map(f => f.articleId);
-    articles.forEach(article => {
-      (article as any).favorited = articleIds.includes(article.id);
-    });
+
+    return articles.map(article => ({
+      ...article,
+      favorited: articleIds.includes(article.id),
+    }));
   }
 }

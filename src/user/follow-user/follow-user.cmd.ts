@@ -1,7 +1,7 @@
 
 import { Auth } from '$share/auth';
 import { SignInData } from '$share/auth/sign-in-data';
-import { NotFound } from '$share/msg';
+import { NotFound, User$FollowUserCmdRes } from '$share/msg';
 import { Transactional } from '$share/typeorm';
 import { IRQ, Service, ServiceHandler } from '@cellularjs/net';
 import { UserEntity, UserRepository } from 'user/$inner/user.data';
@@ -51,6 +51,6 @@ export class FollowUserCmd implements ServiceHandler {
         username,
         following: true,
       },
-    };
+    } as User$FollowUserCmdRes;
   }
 }

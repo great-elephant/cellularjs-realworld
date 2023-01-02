@@ -1,6 +1,6 @@
 
 import { SignInData } from '$share/auth';
-import { NotFound } from '$share/msg';
+import { NotFound, User$GetUserQryRes } from '$share/msg';
 import { IRQ, Service, ServiceHandler } from '@cellularjs/net';
 import { UserRepository } from 'user/$inner/user.data';
 import { UserFollowRepository } from 'user/$inner/user_follow.data';
@@ -20,21 +20,23 @@ export class GetUserQry implements ServiceHandler {
 
     if (!user) throw NotFound({ msg: 'User not found' });
 
-    const isFollowed = !!await userFollowRepository.findOneBy({
-      followeeId: signInData.userId,
-      followerId: user.id,
-    })
+    const isFollowed = await userFollowRepository.exist({
+      where: {
+        followeeId: signInData.userId,
+        followerId: user.id,
+      },
+    });
 
-    const { bio, email, image, username } = user;
+    const { bio, id, image, username } = user;
 
     return {
-      user: {
+      profile: {
+        id,
         bio,
-        email,
         image,
         username,
         following: isFollowed,
-      }
-    };
+      },
+    } as User$GetUserQryRes;
   }
 }

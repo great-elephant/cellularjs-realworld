@@ -20,4 +20,10 @@ export interface UserFollowRepository extends TypeOrmRepository<UserFollowEntity
 
 @Repository(UserFollowEntity)
 export class UserFollowRepository {
+  async getUserFollowList(followeeIds: number[], followerId: number) {
+    return await this.createQueryBuilder('userFollow')
+      .where('userFollow.followeeId IN (:...userIds)', { userIds: followeeIds })
+      .andWhere('userFollow.followerId = :followerId', { followerId: followerId })
+      .getMany();
+  }
 }

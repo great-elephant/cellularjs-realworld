@@ -1,7 +1,9 @@
 import { Auth } from '$share/auth';
 import { SignInData } from '$share/auth/sign-in-data';
+import { User$SearchQryRes } from '$share/msg';
+import { Transporter } from '$share/transporter';
 import { Transactional } from '$share/typeorm';
-import { Service, ServiceHandler } from '@cellularjs/net';
+import { IRQ, Service, ServiceHandler } from '@cellularjs/net';
 import { ArticleRepository } from 'article/$inner/article.data';
 import { TagRepository } from 'article/$inner/tag.data';
 import { CreateArticleReq } from './create-article.req';
@@ -17,6 +19,7 @@ export class CreateArticleCmd implements ServiceHandler {
     private articleRepository: ArticleRepository,
     private tagRepository: TagRepository,
     private createArticleReq: CreateArticleReq,
+    private transporter: Transporter,
   ) { }
 
   async handle() {
@@ -38,6 +41,7 @@ export class CreateArticleCmd implements ServiceHandler {
       article: {
         ...newArticle,
         favorited: false,
+        author: await this.getAuthorInfo(),
       },
     };
   }
@@ -70,5 +74,14 @@ export class CreateArticleCmd implements ServiceHandler {
     }
 
     return slug;
+  }
+
+  private async getAuthorInfo() {
+    const userRes: User$SearchQryRes = (await this.transporter.send(new IRQ(
+      { to: 'User:SearchQry'},
+      { userIds: [this.signInData.userId] },
+    ))).body;
+
+    return userRes.users[0];
   }
 }

@@ -27,13 +27,15 @@ export function configRoutes(app: Express) {
   // /api/articles
   const articlesRouter = Router()
     .post('/', proxyTo('Article:CreateArticleCmd'))
-    .get('/', proxyTo('Article:SearchQry'))
+    .get('/', proxyTo('Graph:SearchArticleQry'))
+    .get('/feed', proxyTo('Graph:ArticleFeedQry'))
     .get('/:slug', proxyTo('Article:GetArticleQry'))
     .delete('/:slug', proxyTo('Article:DeleteArticleCmd'))
     .put('/:slug', proxyTo('Article:UpdateArticleCmd'))
     .post('/:slug/favorite', proxyTo('Article:FavoriteArticleCmd'))
-    .delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'));
+    .delete('/:slug/favorite', proxyTo('Article:UnfavoriteArticleCmd'))
     .post('/:slug/comments', proxyTo('Article:AddCommentCmd'))
+    .get('/:slug/comments', proxyTo('Graph:SearchCommentQry'))
     .delete('/:slug/comments/:commentId', proxyTo('Article:DeleteCommentCmd'));
 
   app.use('/api/articles', articlesRouter);

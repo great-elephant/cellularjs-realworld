@@ -1,6 +1,6 @@
 import { Auth } from '$share/auth';
 import { SignInData } from '$share/auth/sign-in-data';
-import { Forbidden, NotFound, Unprocessable } from '$share/msg';
+import { Forbidden, NotFound } from '$share/msg';
 import { Transactional } from '$share/typeorm';
 import { IRQ, Service, ServiceHandler } from '@cellularjs/net';
 import { ArticleRepository } from 'article/$inner/article.data';
@@ -24,7 +24,7 @@ export class DeleteArticleCmd implements ServiceHandler {
     }
 
     if (article.author !== signInData.userId) {
-      throw Forbidden();
+      throw Forbidden({ msg: 'You are not the author of this article' });
     }
 
     await articleRepository.delete(article.id);

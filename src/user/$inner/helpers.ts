@@ -1,4 +1,5 @@
 import { jwt } from '$share/auth';
+import { User$CurrentUserRes } from '$share/msg';
 import { UserEntity } from './user.data';
 
 export function formatUserRes(user: UserEntity) {
@@ -6,12 +7,12 @@ export function formatUserRes(user: UserEntity) {
 
   return {
     user: {
-      id, 
+      id,
       bio,
-      email, 
+      email,
       image,
       username,
       token: jwt.sign({ userId: id }),
     },
-  };
+  } as User$CurrentUserRes;
 }
