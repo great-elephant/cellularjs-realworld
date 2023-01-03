@@ -10,12 +10,12 @@
     "build": "cellular build -e http"
   },
   "dependencies": {
-    "@cellularjs/cli": "^0.13.1",
-    "@cellularjs/di": "^0.13.1",
-    "@cellularjs/env": "^0.13.1",
-    "@cellularjs/express-proxy": "^0.13.1",
-    "@cellularjs/logger": "^0.13.1",
-    "@cellularjs/net": "^0.13.1",
+    "@cellularjs/cli": "^0.13.3",
+    "@cellularjs/di": "^0.13.3",
+    "@cellularjs/env": "^0.13.3",
+    "@cellularjs/express-proxy": "^0.13.3",
+    "@cellularjs/logger": "^0.13.3",
+    "@cellularjs/net": "^0.13.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",

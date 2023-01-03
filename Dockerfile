@@ -1,9 +1,11 @@
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . .
+COPY package*.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
+
+COPY . .
 
 CMD yarn run dev

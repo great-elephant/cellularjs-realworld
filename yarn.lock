@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@cellularjs/cli@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/cli/-/cli-0.13.1.tgz#f0db8c9caba307fe176402e2409b0fc30fc3844e"
-  integrity sha512-SHMbTPqYFIO8CFVz8KIPa/4DmITPyy0zZcbDCvga3aOwZBiUsRPGXI2HSA48qUym6uotr7irkGdEKNv8p5JpwA==
+"@cellularjs/cli@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/cli/-/cli-0.13.3.tgz#adc944830cc7ecd79a314e4a56c5813580b9f21b"
+  integrity sha512-hAuwDlHTXRbV64UDzvdjB+4ho1I9klrmaGdV2UqsFSdwazaoS/8unVp4id6oRdCvlwspbgOB/2bV/8bm93eM6w==
   dependencies:
     chalk "4"
     clui "^0.3.6"
@@ -23,37 +23,37 @@
     webpack-node-externals "^3.0.0"
     webpackbar "^5.0.2"
 
-"@cellularjs/di@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/di/-/di-0.13.1.tgz#515a1c0e4b442031ee07d6eb30f7321bd6870a2e"
-  integrity sha512-yydeFnCLcRdaZMrPz1QvQ+BsH442IfNHg4CpU/trlFbxRGoohWbb9yh+nZY1X5bU3lPfmLLuKh3zC0zFprmdqA==
+"@cellularjs/di@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/di/-/di-0.13.3.tgz#11100429aba8fa1fae545ede73b1a98d4c0ba870"
+  integrity sha512-Krx5LJ29qbFE+w0sKYb1cTVyiLEXVkL808FDwlYw6QL7MbV6apxz0QMIF8ccp2QZtvN3aTEhxZWM94VExdhjsQ==
   dependencies:
     reflect-metadata "^0.1.13"
 
-"@cellularjs/env@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/env/-/env-0.13.1.tgz#28b97e17e8b307b74f9972a9e10255e0a7fcf240"
-  integrity sha512-JduhG0GG97nqDN7unBO7ugIvqQcBW3UrLmeomnvwGKrX7gRJan+xRlikyTg+lArEjceNXm/hNBij7bt65g2MMg==
+"@cellularjs/env@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/env/-/env-0.13.3.tgz#a7ca330ef50a91e3dfbfe22e20bb86ed84efb9d0"
+  integrity sha512-QdRBv0l6eui2d8igxDk4gAkKufs0IBKCLNwf7i/YozAGh3vJImMLgf2yZQmMEusPozZZjCVGG2dgEvCfyHrTtQ==
   dependencies:
-    "@cellularjs/di" "^0.13.1"
+    "@cellularjs/di" "^0.13.3"
     dotenv-flow "^3.2.0"
 
-"@cellularjs/express-proxy@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/express-proxy/-/express-proxy-0.13.1.tgz#11e9c50d784456a992960ca043a82c853dd50056"
-  integrity sha512-3f/pKOHBxRVt/AONMQhNYbiJdYTB9bq6D7y0Mx8lUQgVV5tlePdI2Sa6vCEIU5i+eE6JokMEX7gM8ZPQVULaXg==
+"@cellularjs/express-proxy@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/express-proxy/-/express-proxy-0.13.3.tgz#8d6b3795636fbe830738b84a92815cb8358384f3"
+  integrity sha512-l3BjIT83iWcd4DfAyo4+mMtD2ARU5Z3l90sibJ3Faber4MWTi6mnHc43u6j7JxPt+R+pjsM8SHCWhpYcs6j/Zw==
 
-"@cellularjs/logger@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/logger/-/logger-0.13.1.tgz#823766e8bd2ac6a3dd59aa90371773603d3dd46a"
-  integrity sha512-iOw7+/4Qe4OmiqosWLLxKputsHuHO/jsXnHZTa1/ybFtZgAUeRmKJ6vY1O7VZ5IIH/+Ud7/3WdTDqX0vWJuALQ==
+"@cellularjs/logger@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/logger/-/logger-0.13.3.tgz#fe021a507c1ac8ababee94bcba55e676570d4b03"
+  integrity sha512-mOj0X9S1wNE1V2y1QxCM9ciSR2Iu+2dFCFZMme+TfXgmWkguCkLEWAqH6j3sHFK53wl8eMKfgj1HmvZKOcG9gg==
 
-"@cellularjs/net@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@cellularjs/net/-/net-0.13.1.tgz#81788be09d011352679015c5884c625ceeb28669"
-  integrity sha512-CUuDfVJ30uAOmeSTbvSq2+rtXATfziFfUm88jr1JSCnIJ3+j6zyztYg+Oe7mpYc6mvEkP1zw+8uD5FH2wA3NlQ==
+"@cellularjs/net@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@cellularjs/net/-/net-0.13.3.tgz#f3bbc1995e37cb1187fa697178a787b0f034bba2"
+  integrity sha512-szGr0Ea2lTLpBgy9R8b8DYwQKe+GZZ8boJa+FMBfwL09ckukX9+qXoFPTf8gC+hNwlYN7uX9PpGjUZQrlEd4pQ==
   dependencies:
-    "@cellularjs/di" "^0.13.1"
+    "@cellularjs/di" "^0.13.3"
     emittery "^0.10.0"
 
 "@cspotcode/source-map-support@^0.8.0":
