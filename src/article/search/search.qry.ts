@@ -65,7 +65,7 @@ export class SearchQry implements ServiceHandler {
   }
 
   private async bindingFavorited(articles: ArticleEntity[]) {
-    if (!articles.length) return;
+    if (!articles.length) return [];
 
     const { signInData, favoriteRepository } = this;
 
