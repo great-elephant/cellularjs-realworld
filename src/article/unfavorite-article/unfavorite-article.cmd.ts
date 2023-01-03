@@ -28,7 +28,7 @@ export class UnfavoriteArticleCmd implements ServiceHandler {
 
     if (!article) throw NotFound();
 
-    if (await this.isFavorited()) return this.returnArticle();
+    if (!await this.isFavorited()) return this.returnArticle();
 
     await favoriteRepository.delete({
       userId: signInData.userId,
