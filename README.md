@@ -25,7 +25,7 @@ Stage 1: Application can run on the same server but database schema and code are
 
 Stage X: ...
 ```
-_(As you can see, this source code use stage 1)_
+This repository shows you how your application will look like when developing in stage 1 with CellularJS.
 
 # Licence
 MIT

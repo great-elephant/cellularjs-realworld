@@ -8,6 +8,7 @@ export class Transporter {
   ) { }
 
   send(irq: IRQ) {
+    // `send` is just a function call, there is no http request here!
     return send(irq.withHeaderItem(
       'authorization',
       this.incomingIrq.header.authorization,
