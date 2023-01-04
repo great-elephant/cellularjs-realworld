@@ -2,7 +2,7 @@
 import { Unprocessable } from '$share/msg';
 import { Transactional } from '$share/typeorm';
 import { Service, ServiceHandler } from '@cellularjs/net';
-import { formatUserRes } from 'user/$inner/helpers';
+import { formatUserRes, pwd } from 'user/$inner/helpers';
 import { UserRepository } from 'user/$inner/user.data';
 import { RegisterReq } from './register.req';
 
@@ -27,7 +27,12 @@ export class RegisterCmd implements ServiceHandler {
       throw Unprocessable({ msg: 'Username already exists'});
     }
 
-    const newUser = await userRepository.save(registerReq);
+    const hashedPwd = await pwd.hash(registerReq.password)
+
+    const newUser = await userRepository.save({
+      ...registerReq,
+      password: hashedPwd,
+    });
 
     return formatUserRes(newUser);
   }

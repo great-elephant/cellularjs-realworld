@@ -2,7 +2,7 @@
 import { UnAuthorized } from '$share/msg';
 import { Transactional } from '$share/typeorm';
 import { Service, ServiceHandler } from '@cellularjs/net';
-import { formatUserRes } from 'user/$inner/helpers';
+import { formatUserRes, pwd } from 'user/$inner/helpers';
 import { UserRepository } from 'user/$inner/user.data';
 import { LoginReq } from './login.req';
 
@@ -17,7 +17,12 @@ export class LoginQry implements ServiceHandler {
     const { userRepository, loginReq } = this;
     const user = await userRepository.findOneBy({ email: loginReq.email });
 
-    if (!user || user.password !== loginReq.password) {
+    if (!user) {
+      throw UnAuthorized({ msg: 'Your email or password is incorrect'});
+    }
+
+    const isPwdMatched = await pwd.compare(loginReq.password, user.password);
+    if (!isPwdMatched) {
       throw UnAuthorized({ msg: 'Your email or password is incorrect'});
     }
 
