@@ -15,17 +15,17 @@ export class GetUserQry implements ServiceHandler {
   ) { }
 
   async handle() {
-    const { irq,signInData, userRepository, userFollowRepository } = this;
+    const { irq, signInData, userRepository, userFollowRepository } = this;
     const user = await userRepository.findOneBy({ username: irq.body.username });
 
     if (!user) throw NotFound({ msg: 'User not found' });
 
-    const isFollowed = await userFollowRepository.exist({
+    const isFollowed = signInData ? await userFollowRepository.exist({
       where: {
         followeeId: signInData.userId,
         followerId: user.id,
       },
-    });
+    }) : false;
 
     const { bio, id, image, username } = user;
 

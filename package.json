@@ -6,6 +6,7 @@
   "author": "great-elephant <hoangtv2101@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "dev": "cellular dev --entry http",
     "build": "cellular build -e http"
   },
@@ -26,7 +27,12 @@
     "typeorm": "^0.3.11"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/express": "^4.17.15",
-    "@types/jsonwebtoken": "^8.5.9"
+    "@types/jest": "^29.2.5",
+    "@types/jsonwebtoken": "^8.5.9",
+    "jest": "^29.3.1",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.3"
   }
 }

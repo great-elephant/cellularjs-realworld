@@ -12,12 +12,17 @@ We've gone to great lengths to adhere to the [**CellularJS**](https://github.com
 
 For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
 
-# Getting started
+# 1. Getting started
+## 1.1. Run dev server
 - Open `.env` file, replace `DB_HOST=localhost` with `DB_HOST=db`.
 - Run `docker-compose up`
 - Follow this link for API testing: https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction
 
-# What is stage 1?
+## 1.2. Run test
+- Install PostgreSQL.
+- Create test database `CREATE DATABASE conduit_test`
+- Run test: `yarn test` or `yarn test --coverage`
+# 2. What is stage 1?
 ```
 Stage 0: At this stage, the main purpose is making things done. You can access directly into other bounded context for getting data, ...
 
@@ -27,5 +32,5 @@ Stage X: ...
 ```
 This repository shows you how your application will look like when developing in stage 1 with CellularJS.
 
-# Licence
+# 3. Licence
 MIT
